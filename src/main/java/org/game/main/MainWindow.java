@@ -15,7 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.game.engine.Engine;
-import org.game.gameScreen.Game;
+import org.game.gamescreen.Game;
+import org.game.gamescreen.Game.RotatableLabel;
 import org.game.home.WelcomeScreen;
 import org.game.util.GenerateRandom;
 import org.game.util.constants.AppContext;
@@ -48,7 +49,7 @@ public class MainWindow {
             jframe.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Map<String, JLabel> assets = new Game().initGame(jframe);
+                    Map<String, RotatableLabel> assets = new Game().initGame(jframe);
                     new Engine().run(jframe, assets);
                     isRunning = true;
 

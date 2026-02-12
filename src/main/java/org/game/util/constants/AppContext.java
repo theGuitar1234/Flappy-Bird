@@ -10,7 +10,7 @@ public final class AppContext {
 
     public static final String BIRD_KEY = "bird";
 
-    public static final int REFRESH = 64;
+    public static final int REFRESH = 48;
         
     public static final int WIDTH = 450;
     public static final int HEIGHT = 800;
