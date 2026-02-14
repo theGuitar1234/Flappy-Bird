@@ -18,17 +18,19 @@ public class WelcomeScreen {
     private JPanel jpanel;
 
     private JLabel bird;
+    private JLabel base;
     private JLabel startGame;
 
     public WelcomeScreen(JFrame jframe) {
 
         jpanel = new JPanel();
         bird = new JLabel();
+        base = new JLabel();
         startGame = new JLabel();
 
         initPanel(jpanel);
 
-        drawWelcomeScreen(jpanel, bird, startGame);
+        drawWelcomeScreen(jpanel, bird, base, startGame);
         welcomeAnimation(bird, startGame);
 
         JPanel root = (JPanel) jframe.getContentPane();
@@ -65,19 +67,26 @@ public class WelcomeScreen {
         timer.schedule(timerTask, 0, AppContext.REFRESH);
     }
 
-    private void drawWelcomeScreen(JPanel jpanel, JLabel bird, JLabel startGame) {
+    private void drawWelcomeScreen(JPanel jpanel, JLabel bird, JLabel base, JLabel startGame) {
         bird.setSize(bird.getPreferredSize());
+        base.setSize(base.getPreferredSize());
         startGame.setSize(startGame.getPreferredSize());
 
         bird.setIcon(new ImageIcon(AppContext.BIRD_PATHS[AppContext.RAND_BIRD][0]));
+        base.setIcon(new ImageIcon(AppContext.BASE));
         startGame.setIcon(new ImageIcon(AppContext.START_GAME));
  
         Dimension b = bird.getPreferredSize();
+        Dimension ba = base.getPreferredSize();
 
         int xBird = (jpanel.getWidth() - b.width) / 16;
         int yBird = (int) ((jpanel.getHeight() - b.height) / 1.5);
 
+        int xBase = 0;
+        int yBase = jpanel.getHeight() + AppContext.BASE_HEIGHT;
+
         bird.setBounds(new Rectangle(xBird, yBird, b.width, b.height));
+        base.setBounds(new Rectangle(xBase, yBase, ba.width, ba.height));
 
         Dimension s = startGame.getPreferredSize();
 
@@ -87,6 +96,7 @@ public class WelcomeScreen {
         startGame.setBounds(new Rectangle(xStartGame, yStartGame, s.width, s.height));
 
         jpanel.add(bird);
+        jpanel.add(base);
         jpanel.add(startGame);
     }
 

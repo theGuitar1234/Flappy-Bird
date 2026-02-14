@@ -22,6 +22,7 @@ public class Game {
 
     private JPanel jpanel;
     private RotatableLabel bird;
+    private JLabel base;
 
     private static final int RAND_BIRD = GenerateRandom.generateRandom(0, 3);
 
@@ -29,10 +30,11 @@ public class Game {
 
         jpanel = new JPanel();
         bird = new RotatableLabel();
+        base = new JLabel();
 
         initPanel(jpanel);
 
-        drawGame(jpanel, bird);
+        drawGame(jpanel, bird, base);
         flapAnimation(bird);
 
         JPanel root = (JPanel) jframe.getContentPane();
@@ -52,9 +54,8 @@ public class Game {
         jpanel.setLayout(null);
     }
 
-    private void drawGame(JPanel jpanel, JLabel bird) {
+    private void drawGame(JPanel jpanel, RotatableLabel bird, JLabel base) {
         bird.setSize(bird.getPreferredSize());
-     
         bird.setIcon(new ImageIcon(AppContext.BIRD_PATHS[RAND_BIRD][0]));
 
         Dimension b = bird.getPreferredSize();
@@ -64,7 +65,18 @@ public class Game {
 
         bird.setBounds(new Rectangle(xBird, yBird, b.width, b.height));
 
+        base.setSize(base.getPreferredSize());
+        base.setIcon(new ImageIcon(AppContext.BASE));
+
+        Dimension ba = base.getPreferredSize();
+
+        int xBase = 0;
+        int yBase = jpanel.getHeight() + AppContext.BASE_HEIGHT;
+
+        base.setBounds(new Rectangle(xBase, yBase, ba.width, ba.height));
+
         jpanel.add(bird);
+        jpanel.add(base);
     }
 
     private void flapAnimation(JLabel bird) {

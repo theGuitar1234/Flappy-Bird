@@ -14,26 +14,32 @@ import org.game.util.constants.AppContext;
 
 public class Sound {
     private static Clip clipFlap;
+    private static Clip clipHit;
 
     private Sound() {}
 
     public static void init() {
         try {
             File flap = new File(AppContext.FLAP_AUD);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(flap);
+            File hit = new File(AppContext.HIT_AUD);
+
+            AudioInputStream flapAudioInputStream = AudioSystem.getAudioInputStream(flap);
+            AudioInputStream hitAudioInputStream = AudioSystem.getAudioInputStream(hit);
 
             clipFlap = AudioSystem.getClip();
-            clipFlap.open(audioInputStream);
+            clipHit = AudioSystem.getClip();
+            clipFlap.open(flapAudioInputStream);
+            clipHit.open(hitAudioInputStream);
 
         } catch(IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             e.printStackTrace();
             clipFlap = null;
+            clipHit = null;
         }
     }
 
     public static void flap() {
         if (clipFlap == null) return;
-        //if (clipFlap.isRunning()) clipFlap.stop();
         clipFlap.stop();
         clipFlap.setFramePosition(0);
         clipFlap.start();
@@ -51,6 +57,20 @@ public class Sound {
             clipFlap.close();
             clipFlap = null;
         }
+    }
+
+    public static void hit() {
+        if (clipHit == null) return;
+        clipHit.stop();
+        clipHit.setFramePosition(0);
+        clipHit.start();
+    }
+
+    public static void stopHit() {
+        if (clipHit == null) return;
+        
+        clipHit.stop();
+        clipHit.setFramePosition(0);
     }
 
 }
