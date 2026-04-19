@@ -14,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.game.engine.Engine;
-import org.game.gamescreen.Game;
-import org.game.gamescreen.Game.RotatableLabel;
+import org.game.gameScreen.Game;
+import org.game.gameScreen.Game.RotatableLabel;
 import org.game.home.WelcomeScreen;
 import org.game.util.GenerateRandom;
 import org.game.util.constants.AppContext;

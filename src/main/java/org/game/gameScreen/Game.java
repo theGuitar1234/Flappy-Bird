@@ -1,4 +1,4 @@
-package org.game.gamescreen;
+package org.game.gameScreen;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

@@ -11,7 +11,7 @@ import javax.swing.Timer;
 import javax.swing.JFrame;
 
 import org.game.engine.sound.Sound;
-import org.game.gamescreen.Game.RotatableLabel;
+import org.game.gameScreen.Game.RotatableLabel;
 import org.game.util.constants.AppContext;
 
 public class Engine {
