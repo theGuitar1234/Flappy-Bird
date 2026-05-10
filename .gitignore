@@ -1,11 +1,8 @@
-# ### target/ ###
-# target/
+### target/ ###
+target/
 
 ### .jar ###
 *.jar
 
-# ### target/ ###
-# target/
-
-# ### binaries/ ###
-# binaries/
+### binaries/ ###
+binaries/
